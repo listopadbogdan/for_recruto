@@ -9,10 +9,15 @@ app = FastAPI()
 
 @app.get('/')
 async def hello_page(name: Optional[str] = '', message: Optional[str] = ''):
-    return Response(
+    if name:
+        return Response(
         f'Hello, {name}! '
         f'{message}!', media_type='text/html'
     )
+    else:
+        return Response(
+            f'Privet',
+            media_type='text/html')
 
 
 if __name__ == '__main__':
